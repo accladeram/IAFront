@@ -10,14 +10,16 @@ import { ProfileComponent } from './modules/eventos/components/profile-component
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,
+  imports: [
+    RouterOutlet,
     MenuComponent,
     AuthComponent,
-     ChatbotComponent,
-     HistoricalComponent,
-     HomeComponent,
-     PaymentComponent,
-    ProfileComponent],
+    ChatbotComponent,
+    HistoricalComponent,
+    HomeComponent,
+    PaymentComponent,
+    ProfileComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
