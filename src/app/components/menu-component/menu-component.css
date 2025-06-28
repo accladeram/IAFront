@@ -1,0 +1,38 @@
+/* Ajusta espacio para que el contenido no quede debajo de la bottom navbar en mobile */
+:host {
+  display: block;
+  padding-bottom: 56px; /* altura del navbar inferior */
+}
+
+.nav-link {
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Al hacer hover */
+.nav-link:hover {
+  background-color: #e0e0e0;
+  color: #000 !important;
+}
+
+/* Cuando la ruta está activa */
+.nav-link.active {
+  background-color: #d0d0d0;
+  color: #000 !important;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  :host {
+    /* padding-left: 80px; espacio para la sidebar en escritorio */
+    padding-bottom: 0;
+  }
+
+
+
+
+}

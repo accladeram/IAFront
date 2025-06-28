@@ -1,0 +1,166 @@
+
+:host {
+  height: 100vh;
+}
+
+.feed-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 8px;
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+
+}
+
+.search-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.search-box {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  flex: 1 1 100px;
+  min-width: 90px;
+  padding: 8px 0;
+  border: none;
+  border-radius: 16px;
+  background: #f0f0f0;
+  color: #333;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn:focus {
+  background: #e1306c;
+  color: #fff;
+}
+
+.posts {
+  margin-top: 16px;
+}
+
+.post {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+
+.post-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.post-username {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  background: #eee;
+  display: block;
+}
+
+.post-actions {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.post-likes {
+  font-weight: bold;
+  padding: 0 12px;
+  margin-bottom: 4px;
+}
+
+.post-caption {
+  padding: 0 12px 8px 12px;
+  font-size: 14px;
+}
+
+.post-time {
+  color: #888;
+  font-size: 12px;
+  padding: 0 12px 12px 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .feed-container {
+    padding: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  .post {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  .search-filter-bar {
+    padding: 12px 4px;
+  }
+  .filter-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .filter-btn {
+    width: 100%;
+    min-width: unset;
+    font-size: 16px;
+    padding: 10px 0;
+  }
+  .post-header {
+    padding: 10px 6px;
+  }
+  .post-actions {
+    padding: 8px 6px;
+  }
+  .post-caption,
+  .post-likes,
+  .post-time {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}

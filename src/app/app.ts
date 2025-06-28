@@ -12,7 +12,7 @@ import { ProfileComponent } from './modules/eventos/components/profile-component
   selector: 'app-root',
   imports: [RouterOutlet,
     MenuComponent,
-    AuthComponent,
+      AuthComponent,
      ChatbotComponent,
      HistoricalComponent,
      HomeComponent,
