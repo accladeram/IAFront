@@ -1,0 +1,16 @@
+html,
+body {
+  height: 100%;
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  cursor: default; /* Establece el cursor en 'none' para ocultarlo completamente */
+}
+
+
+ .main-content {
+  display: block;
+  height: 100vh; /* Asegura que el componente ocupe toda la altura de la ventana */
+  overflow: hidden; /* Evita el scroll */
+}

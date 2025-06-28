@@ -1,1 +1,71 @@
-<p>menu-component works!</p>
+<!-- Mobile navbar -->
+<nav class="navbar fixed-bottom d-md-none bg-white border-top shadow-sm justify-content-around py-1">
+  <div class="mylink">
+    <a routerLink="/" routerLinkActive="active"   class="nav-link text-center text-secondary "  >
+      <i class="bi bi-house fs-4"></i>
+    </a>
+  </div>
+  <div class="mylink">
+    <a routerLink="/history" routerLinkActive="active"  class="nav-link text-center text-secondary "  >
+      <i class="bi bi-clock-history fs-4"></i>
+    </a>
+  </div>
+ <div class="mylink">
+  <a routerLink="payment" routerLinkActive="active" class="nav-link text-center text-secondary "   >
+      <i class="bi bi-bag fs-4"></i>
+    </a>
+ </div>
+<div class="mylink">
+  <a routerLink="chatbot"  routerLinkActive="active"  class="nav-link text-center text-secondary " >
+    <i class="bi bi-robot fs-4"></i>
+  </a>
+</div>
+
+<div class="mylink">
+ <a routerLink="profile" routerLinkActive="active" class="nav-link text-center text-secondary "   >
+    <i class="bi bi-person fs-4"></i>
+  </a>
+</div>
+
+
+
+
+</nav>
+
+<!-- Desktop sidebar -->
+<div class="d-none d-md-flex flex-column bg-white border-end shadow-sm position-fixed h-100 p-3 align-items-center" style="width: 80px;">
+  <div class="mylink mb-4">
+    <a routerLink="/" routerLinkActive="active"  class="nav-link  text-secondary text-center"  >
+        <i class="bi bi-house fs-4"></i>
+      </a>
+  </div>
+  <div class="mylink mb-4">
+    <a routerLink="/history" routerLinkActive="active"  class="nav-link  text-secondary text-center" >
+        <i class="bi bi-clock-history fs-4"></i>
+    </a>
+  </div>
+  <div class="mylink mb-4">
+    <a routerLink="/payment" routerLinkActive="active" class="nav-link  text-secondary text-center"  >
+    <i class="bi bi-bag fs-4"></i>
+  </a>
+  </div>
+<div class="mylink mb-4">
+    <a routerLink="/chatbot" routerLinkActive="active" class="nav-link  text-secondary text-center"   >
+      <i class="bi bi-robot fs-4"></i>
+    </a>
+</div>
+<div class="mylink mb-4">
+  <a routerLink="/profile" routerLinkActive="active"  class="nav-link  text-secondary text-center"  >
+    <i class="bi bi-person fs-4"></i>
+  </a>
+</div>
+
+<div class="mylink mb-4 ">
+  <a routerLink="/login" routerLinkActive="active"
+  onclick="logout()"
+  class="nav-link  text-secondary text-center"  >
+        <i class="bi bi-box-arrow-left fs-4"></i>
+  </a>
+</div>
+
+</div>

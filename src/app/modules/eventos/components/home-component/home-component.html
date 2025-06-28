@@ -1,1 +1,53 @@
-<p>home-component works!</p>
+<!-- Instagram-like Home/Feed Page with Search and Filters -->
+
+<div class="feed-container">
+  <!-- Search and Filter Section -->
+  <div class="search-filter-bar">
+    <input type="text" class="search-box" placeholder="Search..." />
+    <div class="filter-buttons">
+      <button class="filter-btn">Favorites</button>
+      <button class="filter-btn">Recommended</button>
+      <button class="filter-btn">History</button>
+    </div>
+  </div>
+
+  <!-- Feed Posts
+  <div class="posts">
+    <div class="post" *ngFor="let post of posts">
+      <div class="post-header">
+        <img [src]="post.userAvatar" alt="User" class="post-avatar" />
+        <span class="post-username">{{ post.username }}</span>
+      </div>
+      <img [src]="post.image" alt="Post Image" class="post-image" />
+      <div class="post-actions">
+        <button class="action-btn">❤️</button>
+        <button class="action-btn">💬</button>
+        <button class="action-btn">✈️</button>
+      </div>
+      <div class="post-likes">{{ post.likes }} likes</div>
+      <div class="post-caption">
+        <span class="post-username">{{ post.username }}</span>
+        {{ post.caption }}
+      </div>
+      <div class="post-time">{{ post.time }}</div>
+    </div>
+  </div> -->
+  <!-- Feed de Eventos -->
+<div class="events">
+  <div class="event" *ngFor="let event of events">
+    <div class="event-header">
+      <img [src]="event.image" alt="Evento" class="event-image" />
+    </div>
+    <div class="event-body p-2">
+      <h5 class="event-title mb-1">{{ event.title }}</h5>
+      <p class="event-location text-muted mb-1">📍 {{ event.location }}</p>
+      <div class="event-actions d-flex justify-content-between">
+        <button class="btn btn-outline-primary btn-sm">Ver más</button>
+        <button class="btn btn-outline-secondary btn-sm">🔗 Compartir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+

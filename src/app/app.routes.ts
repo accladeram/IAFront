@@ -1,4 +1,3 @@
-import { HistoricalComponent } from './modules/eventos/components/historical-component/historical-component';
 
 import { Routes } from '@angular/router';
 
