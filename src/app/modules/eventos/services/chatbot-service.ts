@@ -16,8 +16,8 @@ export interface ChatResponse {
 export class ChatbotService {
   private messages: Message[] = []
   // ✅ URL corregida para coincidir con el proxy
-  private readonly API_URL = "/api-chatbot/api/llm/chat/"
-  private readonly REQUEST_TIMEOUT = 10000
+  private readonly API_URL = "https://4d02-190-104-20-155.ngrok-free.app/api/llm/chat/";
+  private readonly REQUEST_TIMEOUT = 100000
   private conversationId: string | null = null
 
   constructor(private http: HttpClient) {

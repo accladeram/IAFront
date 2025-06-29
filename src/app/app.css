@@ -14,3 +14,17 @@ body {
   height: 100vh; /* Asegura que el componente ocupe toda la altura de la ventana */
   overflow: hidden; /* Evita el scroll */
 }
+
+.pb-20{
+  padding-bottom: 50px;
+}
+.main-content {
+  padding-bottom: 56px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 85px; /* solo aplica en pantallas grandes */
+    padding-bottom: 0;
+  }
+}

@@ -1,37 +1,59 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { EventsService } from '../../services/events-service';
+import { IEvent } from '../../interfaces/event-interface';
 
 @Component({
   selector: 'app-home-component',
-  imports: [CommonModule],
+   imports: [CommonModule, FormsModule],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css'
 })
-export class HomeComponent {
- events = [
-    {
-      image: 'https://source.unsplash.com/featured/?conference',
-      title: 'Conferencia Tech 2025',
-      location: 'La Paz, Bolivia',
-      date: new Date('2025-07-20'),
-    },
-    {
-      image: 'https://source.unsplash.com/featured/?concert',
-      title: 'Festival de Música Andina',
-      location: 'Cochabamba, Bolivia',
-      date: new Date('2025-08-05'),
-    },
-    {
-      image: 'https://source.unsplash.com/featured/?workshop',
-      title: 'Taller de Inteligencia Artificial',
-      location: 'Santa Cruz, Bolivia',
-      date: new Date('2025-07-12'),
-    },
-    {
-      image: 'https://source.unsplash.com/featured/?art',
-      title: 'Exposición de Arte Urbano',
-      location: 'Sucre, Bolivia',
-      date: new Date('2025-09-01'),
-    }
-  ];
+export class HomeComponent   implements OnInit {
+  searchTerm = '';
+   activeTab = 'favorites';
+    eventos: IEvent[]=[];
+    datos: any;
+
+  constructor(private  eventService: EventsService) {}
+
+  ngOnInit(): void {
+    this.loadEventos();
+  }
+
+   async loadEventos(): Promise<void> {
+    this.eventService.getAllRecommended().subscribe((res: any) => {
+        if (res !== null) {
+          this.eventos = res;
+        }
+      }
+    );
+  }
+
+   setActiveTab(tab: string) {
+     this.activeTab = tab;
+   }
+
+   viewMore(event: IEvent) {
+     console.log('Ver más:', event);
+     // Implement navigation to event details
+   }
+
+   addToWishlist(event: IEvent) {
+     console.log('Agregar a wishlist:', event);
+     // Implement wishlist functionality
+   }
+
+   shareEvent(event: IEvent) {
+     console.log('Compartir evento:', event);
+     // Implement share functionality
+     if (navigator.share) {
+       navigator.share({
+         title: event.nombre,
+         text: `¡Mira este evento de ${event.artista}!`,
+         url: window.location.href
+       });
+     }
+   }
 }
