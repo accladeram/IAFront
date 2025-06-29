@@ -1,1 +1,115 @@
-<p>payment-component works!</p>
+    <div class="checkout-container">
+      <!-- Header -->
+      <header class="checkout-header">
+        <!-- <button class="back-button" (click)="goBack()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M19 12H5"></path>
+            <path d="M12 19l-7-7 7-7"></path>
+          </svg>
+        </button> -->
+        <h1 class="header-title">{{ headerTitle }}</h1>
+      </header>
+
+      <!-- Content -->
+      <main class="checkout-content">
+        <!-- Payment Method -->
+        <section class="payment-section">
+          <div class="section-item" (click)="changePaymentMethod()">
+            <div class="item-content">
+              <span class="item-label">Método de Pago</span>
+              <div class="payment-info">
+                <span class="payment-type">{{ getPaymentTypeDisplay() }}</span>
+                <span class="payment-details">*{{ paymentMethod.lastFourDigits }}</span>
+              </div>
+            </div>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 18l6-6-6-6"></path>
+            </svg>
+          </div>
+        </section>
+
+        <!-- Discount Section -->
+        <section class="discount-section">
+          <div class="section-item" (click)="applyDiscount()">
+            <div class="item-content">
+              <span class="item-label">Descuento</span>
+              <span class="item-value" [class.has-discount]="discountCode">
+                {{ discountCode || 'Aplicar código' }}
+              </span>
+            </div>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 18l6-6-6-6"></path>
+            </svg>
+          </div>
+        </section>
+
+        <!-- Items Section -->
+        <section class="items-section">
+          <div class="section-header">
+            <span class="section-title">ITEMS</span>
+            <span class="section-subtitle">Descripción</span>
+            <span class="section-subtitle">Precio</span>
+          </div>
+
+          <div class="items-list">
+            <div class="item-row" *ngFor="let item of checkoutItems; trackBy: trackByItemId">
+              <div class="item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M15 5v2"></path>
+                  <path d="M15 11v2"></path>
+                  <path d="M15 17v2"></path>
+                  <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2z"></path>
+                </svg>
+              </div>
+
+              <div class="item-details">
+                <div class="item-type">{{ getItemTypeDisplay(item.type) }}</div>
+                <div class="item-name">{{ item.eventName }}</div>
+                <div class="item-description">{{ item.description }}</div>
+                <div class="item-quantity">Cantidad: {{ item.quantity.toString().padStart(2, '0') }}</div>
+              </div>
+
+              <div class="item-price">
+                {{ item.price | currency:item.currency:'symbol':'1.2-2' }}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="summary-section">
+          <div class="summary-row">
+            <span class="summary-label">Subtotal ({{ getTotalItems() }})</span>
+            <span class="summary-value">{{ getSubtotal() | currency:'USD':'symbol':'1.2-2' }}</span>
+          </div>
+
+          <div class="summary-row">
+            <span class="summary-label">Envío</span>
+            <span class="summary-value shipping-free">{{ getShippingDisplay() }}</span>
+          </div>
+
+          <div class="summary-row" *ngIf="getDiscountAmount() > 0">
+            <span class="summary-label">Descuento</span>
+            <span class="summary-value discount-amount">-{{ getDiscountAmount() | currency:'USD':'symbol':'1.2-2' }}</span>
+          </div>
+
+          <div class="summary-row">
+            <span class="summary-label">Impuestos</span>
+            <span class="summary-value">{{ getTaxes() | currency:'USD':'symbol':'1.2-2' }}</span>
+          </div>
+
+          <div class="summary-row total-row">
+            <span class="summary-label total-label">Total</span>
+            <span class="summary-value total-value">{{ getTotal() | currency:'USD':'symbol':'1.2-2' }}</span>
+          </div>
+        </section>
+      </main>
+
+      <!-- Purchase Button -->
+      <footer class="checkout-footer">
+        <button class="purchase-button" (click)="completePurchase()" [disabled]="isProcessing">
+          <span *ngIf="!isProcessing">{{ purchaseButtonText }}</span>
+          <span *ngIf="isProcessing" class="processing-text">Procesando...</span>
+        </button>
+      </footer>
+    </div>
