@@ -1,0 +1,251 @@
+.profile-container {
+      max-width: 100%;
+      height: 100vh;
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      color: #000000;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    /* Header */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid #f3f4f6;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .back-button,
+    .settings-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      transition: background 0.2s ease;
+      border-radius: 50%;
+    }
+
+    .back-button:hover,
+    .settings-button:hover {
+      background: #f3f4f6;
+    }
+
+    .back-button svg,
+    .settings-button svg {
+      width: 20px;
+      height: 20px;
+      color: #000000;
+      stroke-width: 2;
+    }
+
+    /* Profile Section */
+    .profile-section {
+      display: flex;
+      justify-content: center;
+      padding: 40px 24px;
+      background: #ffffff;
+    }
+
+    .profile-image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #e5e5e5;
+      background: #f9fafb;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .edit-profile-button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      background: #ffffff;
+      border: 2px solid #e5e5e5;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .edit-profile-button:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+    }
+
+    .edit-profile-button svg {
+      width: 16px;
+      height: 16px;
+      color: #374151;
+    }
+
+    /* User Information */
+    .user-info-section {
+      flex: 1;
+      padding: 0 24px;
+      background: #ffffff;
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      font-size: 15px;
+      color: #000000;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    /* Logout Section */
+    .logout-section {
+      padding: 40px 24px;
+      display: flex;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .logout-button {
+      background: none;
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .logout-button:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    .logout-button:active {
+      transform: translateY(1px);
+    }
+
+    /* Bottom Indicator */
+    .bottom-indicator {
+      width: 134px;
+      height: 5px;
+      background: #000000;
+      margin: 20px auto;
+      border-radius: 2.5px;
+      flex-shrink: 0;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .profile-header {
+        padding: 16px 20px;
+      }
+
+      .profile-section {
+        padding: 32px 20px;
+      }
+
+      .profile-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      .edit-profile-button {
+        width: 32px;
+        height: 32px;
+      }
+
+      .edit-profile-button svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .user-info-section {
+        padding: 0 20px;
+      }
+
+      .info-item {
+        padding: 16px 0;
+      }
+
+      .info-label {
+        font-size: 12px;
+      }
+
+      .info-value {
+        font-size: 14px;
+      }
+
+      .logout-section {
+        padding: 32px 20px;
+      }
+
+      .logout-button {
+        padding: 10px 28px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .profile-image {
+        width: 90px;
+        height: 90px;
+      }
+
+      .edit-profile-button {
+        width: 28px;
+        height: 28px;
+      }
+
+      .edit-profile-button svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .info-label {
+        font-size: 11px;
+      }
+
+      .info-value {
+        font-size: 13px;
+      }
+    }
