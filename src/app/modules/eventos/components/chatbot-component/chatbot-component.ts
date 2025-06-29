@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Message } from '../../interfaces/message';
-import { ChatbotService } from '../../services/chatbot.service';
+import { ChatbotService } from '../../services/chatbot-service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -32,22 +32,22 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
   }
 
-  sendMessage() {
+  async sendMessage() {
     if (this.newMessage.trim()) {
-      // Agregar mensaje del usuario
-      this.addUserMessage(this.newMessage);
       const userMessage = this.newMessage;
       this.newMessage = '';
+      this.addUserMessage(userMessage);
 
-      // Simular que el bot está escribiendo
       this.isTyping = true;
 
-      // Respuesta del bot después de un delay
-      setTimeout(() => {
-        this.isTyping = false;
-        const botResponse = this.chatService.getBotResponse(userMessage);
+      try {
+        const botResponse = await this.chatService.getBotResponse(userMessage);
         this.addBotMessage(botResponse);
-      }, 1000 + Math.random() * 2000);
+      } catch {
+        this.addBotMessage('No se pudo obtener respuesta.');
+      } finally {
+        this.isTyping = false;
+      }
     }
   }
 

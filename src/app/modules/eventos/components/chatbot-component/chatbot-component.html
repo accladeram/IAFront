@@ -17,19 +17,18 @@
 
         <div class="message-content">
           <div class="message-bubble">
-            <p>{{ message.text }}</p>
+            <p>{{ message.text || '...' }}</p>
           </div>
           <div class="message-time">
-            {{ message.timestamp | date:'HH:mm' }}
+            {{ message.timestamp ? (message.timestamp | date: 'HH:mm') : '' }}
           </div>
         </div>
-
       </div>
 
       <!-- Indicador de escritura -->
       <div class="message bot-message" *ngIf="isTyping">
         <div class="message-content">
-          <div class="message-bubble typing-indicator">
+          <div class="message-bubble typing-indicator" aria-label="Escribiendo...">
             <div class="typing-dots">
               <span></span>
               <span></span>
@@ -45,7 +44,9 @@
   <div class="message-input-container">
     <div class="input-wrapper">
       <textarea [(ngModel)]="newMessage" (keypress)="onKeyPress($event)" placeholder="Escribe un mensaje..."
-        class="message-input" rows="1"></textarea>
+        class="message-input" rows="1">
+      </textarea>
+
       <button (click)="sendMessage()" class="send-button" [disabled]="!newMessage.trim()">
         <span>↑</span>
       </button>

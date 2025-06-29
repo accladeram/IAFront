@@ -1,0 +1,18 @@
+{
+  "/api": {
+    "target": "https://neurocoders-exkkuejiia-uc.a.run.app",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/api-chatbot": {
+    "target": "https://4d02-190-104-20-155.ngrok-free.app",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api-chatbot": ""
+    }
+  }
+}
