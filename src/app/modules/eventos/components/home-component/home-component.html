@@ -1,53 +1,131 @@
-<!-- Instagram-like Home/Feed Page with Search and Filters -->
+  <div class="event-feed-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search events..."
+            class="search-input"
+            [(ngModel)]="searchTerm"
+          >
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </div>
 
-<div class="feed-container">
-  <!-- Search and Filter Section -->
-  <div class="search-filter-bar">
-    <input type="text" class="search-box" placeholder="Search..." />
-    <div class="filter-buttons">
-      <button class="filter-btn">Favorites</button>
-      <button class="filter-btn">Recommended</button>
-      <button class="filter-btn">History</button>
-    </div>
-  </div>
+        <nav class="nav-tabs">
+          <button
+            class="nav-tab"
+            [class.active]="activeTab === 'favorites'"
+            (click)="setActiveTab('favorites')"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            Favorites
+          </button>
+          <button
+            class="nav-tab"
+            [class.active]="activeTab === 'history'"
+            (click)="setActiveTab('history')"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12,6 12,12 16,14"></polyline>
+            </svg>
+            History
+          </button>
+          <button
+            class="nav-tab"
+            [class.active]="activeTab === 'following'"
+            (click)="setActiveTab('following')"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Following
+          </button>
+        </nav>
+      </header>
 
-  <!-- Feed Posts
-  <div class="posts">
-    <div class="post" *ngFor="let post of posts">
-      <div class="post-header">
-        <img [src]="post.userAvatar" alt="User" class="post-avatar" />
-        <span class="post-username">{{ post.username }}</span>
-      </div>
-      <img [src]="post.image" alt="Post Image" class="post-image" />
-      <div class="post-actions">
-        <button class="action-btn">❤️</button>
-        <button class="action-btn">💬</button>
-        <button class="action-btn">✈️</button>
-      </div>
-      <div class="post-likes">{{ post.likes }} likes</div>
-      <div class="post-caption">
-        <span class="post-username">{{ post.username }}</span>
-        {{ post.caption }}
-      </div>
-      <div class="post-time">{{ post.time }}</div>
-    </div>
-  </div> -->
-  <!-- Feed de Eventos -->
-<div class="events">
-  <div class="event" *ngFor="let event of events">
-    <div class="event-header">
-      <img [src]="event.image" alt="Evento" class="event-image" />
-    </div>
-    <div class="event-body p-2">
-      <h5 class="event-title mb-1">{{ event.title }}</h5>
-      <p class="event-location text-muted mb-1">📍 {{ event.location }}</p>
-      <div class="event-actions d-flex justify-content-between">
-        <button class="btn btn-outline-primary btn-sm">Ver más</button>
-        <button class="btn btn-outline-secondary btn-sm">🔗 Compartir</button>
-      </div>
-    </div>
-  </div>
-</div>
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="section-header">
+          <h1 class="section-title">EVENTS</h1>
+          <div class="section-divider"></div>
+        </div>
 
-</div>
+        <!-- Events Feed -->
+        <div class="events-feed">
+          <article class="event-card" *ngFor="let event of events">
+            <!-- Artist Header -->
+            <div class="event-header">
+              <div class="artist-info">
+                <div class="artist-avatar">
+                  <img [src]="event.imageUrl" [alt]="event.artist">
+                </div>
+                <div class="artist-details">
+                  <h3 class="artist-name">{{ event.artist }}</h3>
+                  <p class="time-ago">{{ event.timeAgo }}</p>
+                </div>
+              </div>
+              <button class="more-options">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="19" cy="12" r="1"></circle>
+                  <circle cx="5" cy="12" r="1"></circle>
+                </svg>
+              </button>
+            </div>
 
+            <!-- Event Poster -->
+            <div class="event-poster">
+              <img [src]="event.imageUrl" [alt]="event.eventTitle">
+            </div>
+
+            <!-- Event Info -->
+            <div class="event-info">
+              <h4 class="event-title">{{ event.eventTitle }}</h4>
+              <div class="event-details">
+                <p class="event-venue">{{ event.venue }}</p>
+                <p class="event-date">{{ event.date }}</p>
+                <p class="event-location">{{ event.location }}</p>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons-container">
+              <div class="action-buttons">
+                <button class="action-btn primary" (click)="viewMore(event)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <span>View More</span>
+                </button>
+                <button class="action-btn secondary" (click)="addToWishlist(event)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  <span>Wishlist</span>
+                </button>
+                <button class="action-btn secondary" (click)="shareEvent(event)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                  <span>Share</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </main>
+    </div>
