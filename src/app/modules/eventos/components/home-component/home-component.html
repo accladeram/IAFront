@@ -4,7 +4,7 @@
         <div class="search-container">
           <input
             type="text"
-            placeholder="Search events..."
+            placeholder="Buscar eventos...Search events..."
             class="search-input"
             [(ngModel)]="searchTerm"
           >
@@ -23,7 +23,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
-            Favorites
+            Favoritos
           </button>
           <button
             class="nav-tab"
@@ -34,7 +34,7 @@
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12,6 12,12 16,14"></polyline>
             </svg>
-            History
+            Historial
           </button>
           <button
             class="nav-tab"
@@ -47,7 +47,7 @@
               <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
-            Following
+            Siguiendo
           </button>
         </nav>
       </header>
@@ -55,7 +55,7 @@
       <!-- Main Content -->
       <main class="main-content">
         <div class="section-header">
-          <h1 class="section-title">EVENTS</h1>
+          <h1 class="section-title">EVENTOS</h1>
           <div class="section-divider"></div>
         </div>
 
@@ -91,7 +91,7 @@
             <div class="event-info">
               <h4 class="event-title">{{ event.nombre }}</h4>
               <div class="event-details">
-                <p class="event-venue">{{ event.precioEntrada }}</p>
+                <p class="event-venue">{{ event.precioEntrada }} Bs.</p>
                 <p class="event-date">{{ event.fecha }}</p>
                 <p class="event-location">{{ event.direccion }}</p>
               </div>
@@ -105,13 +105,13 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                   </svg>
-                  <span>View More</span>
+                  <span>Ver detalles</span>
                 </button>
                 <button class="action-btn secondary" (click)="addToWishlist(event)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                   </svg>
-                  <span>Wishlist</span>
+                  <span>Lista de deseos</span>
                 </button>
                 <button class="action-btn secondary" (click)="shareEvent(event)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -121,7 +121,7 @@
                     <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
                     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                   </svg>
-                  <span>Share</span>
+                  <span>Compartir</span>
                 </button>
               </div>
             </div>

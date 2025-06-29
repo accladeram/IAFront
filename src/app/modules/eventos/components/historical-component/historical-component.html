@@ -1,0 +1,96 @@
+ <div class="timeline-container">
+      <!-- Header -->
+      <header class="timeline-header">
+        <button class="back-button" (click)="goBack()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M19 12H5"></path>
+            <path d="M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+
+        <div class="header-content">
+          <h1 class="header-title">HISTÓRICO DE EVENTOS</h1>
+          <div class="header-divider"></div>
+        </div>
+      </header>
+
+      <!-- Timeline Content -->
+      <main class="timeline-content">
+        <div class="timeline-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{ eventHistory.length }}</span>
+            <span class="stat-label">Eventos Asistidos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{{ getUniqueYears().length }}</span>
+            <span class="stat-label">Años Activo</span>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-wrapper" *ngIf="eventHistory.length > 0">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-events">
+            <div
+              class="timeline-event"
+              *ngFor="let event of sortedEvents; let i = index; trackBy: trackByEventId"
+              [class.event-left]="i % 2 === 0"
+              [class.event-right]="i % 2 === 1"
+            >
+              <!-- Year Display -->
+              <div class="year-display">
+                {{ formatYear(event.fecha_evento) }}
+              </div>
+
+              <!-- Timeline Dot -->
+              <div class="timeline-dot">
+                <div class="dot-outer">
+                  <div class="dot-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event Content -->
+              <div class="event-content" (click)="viewEventDetails(event)">
+                <div class="event-header">
+                  <h3 class="event-title">{{ event.nombre_evento }}</h3>
+                  <div class="event-date">
+                    <span class="date-full">{{ formatFullDate(event.fecha_evento) }}</span>
+                  </div>
+                </div>
+
+                <div class="event-description">
+                  <p class="event-text">
+                   Participó en el evento realizado el {{ formatFullDate(event.fecha_evento) }}.
+                  </p>
+                  <p class="event-time">{{ getTimeAgo(event.createdAt) }}</p>
+                </div>
+
+                <!-- Connection Line -->
+                <div class="connection-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="eventHistory.length === 0">
+          <div class="empty-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+          </div>
+          <h3 class="empty-title">No tienes eventos</h3>
+          <p class="empty-description">Tu histórico de eventos aparecerá cuando asistas a eventos.</p>
+        </div>
+      </main>
+    </div>
