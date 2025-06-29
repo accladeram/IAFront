@@ -61,16 +61,16 @@
 
         <!-- Events Feed -->
         <div class="events-feed">
-          <article class="event-card" *ngFor="let event of events">
+          <article class="event-card" *ngFor="let event of eventos">
             <!-- Artist Header -->
             <div class="event-header">
               <div class="artist-info">
                 <div class="artist-avatar">
-                  <img [src]="event.imageUrl" [alt]="event.artist">
+                  <img [src]="event.imagen" [alt]="event.artista">
                 </div>
                 <div class="artist-details">
-                  <h3 class="artist-name">{{ event.artist }}</h3>
-                  <p class="time-ago">{{ event.timeAgo }}</p>
+                  <h3 class="artist-name">{{ event.artista }}</h3>
+                  <p class="time-ago">{{ event.fecha }}</p>
                 </div>
               </div>
               <button class="more-options">
@@ -84,16 +84,16 @@
 
             <!-- Event Poster -->
             <div class="event-poster">
-              <img [src]="event.imageUrl" [alt]="event.eventTitle">
+              <img [src]="event.imagen" [alt]="event.nombre">
             </div>
 
             <!-- Event Info -->
             <div class="event-info">
-              <h4 class="event-title">{{ event.eventTitle }}</h4>
+              <h4 class="event-title">{{ event.nombre }}</h4>
               <div class="event-details">
-                <p class="event-venue">{{ event.venue }}</p>
-                <p class="event-date">{{ event.date }}</p>
-                <p class="event-location">{{ event.location }}</p>
+                <p class="event-venue">{{ event.precioEntrada }}</p>
+                <p class="event-date">{{ event.fecha }}</p>
+                <p class="event-location">{{ event.direccion }}</p>
               </div>
             </div>
 
